@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Polling Unit Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            color: #2e7d32; /* Dark green text */
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #388e3c; /* Darker green for the title */
+        }
+        .form-container {
+            background-color: #c8e6c9; /* Light green container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 1.1em;
+            margin: 10px 0;
+            display: block;
+        }
+        input[type="number"], select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #81c784; /* Green border */
+        }
+        input[type="number"]:focus, select:focus, button:focus {
+            outline: none;
+            border-color: #66bb6a; /* Lighter green focus border */
+        }
+        button {
+            background-color: #66bb6a; /* Lighter green button */
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #388e3c; /* Darker green on hover */
+        }
+        .form-container select {
+            background-color: #ffffff;
+        }
+        .form-container input[type="number"] {
+            background-color: #ffffff;
+        }
+        .form-container button {
+            background-color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Add Polling Unit Results</h1>
+    <div class="form-container">
+        <form method="POST">
+            <label for="polling_unit">Select Polling Unit:</label>
+            <select name="polling_unit" id="polling_unit">
+                {% for unit in polling_units %}
+                    <option value="{{ unit.uniqueid }}">{{ unit.polling_unit_id }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="PDP">PDP Score:</label>
+            <input type="number" name="PDP" id="PDP" value="0" required>
+
+            <label for="APC">APC Score:</label>
+            <input type="number" name="APC" id="APC" value="0" required>
+
+            <label for="LP">LP Score:</label>
+            <input type="number" name="LP" id="LP" value="0" required>
+
+            <label for="NNPP">NNPP Score:</label>
+            <input type="number" name="NNPP" id="NNPP" value="0" required>
+
+            <button type="submit">Save Results</button>
+        </form>
+    </div>
+
+</body>
+</html>

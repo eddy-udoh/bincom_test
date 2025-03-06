@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polling Unit Results</title>
+    <style>
+        /* Green Theme Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaf7ea;
+            color: #2d6a2d;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h2 {
+            background-color: #2d6a2d;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #4CAF50;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .no-results {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: #2d6a2d;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .back-btn:hover {
+            background-color: #3a8e3a;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Polling Unit Results</h2>
+
+    {% if results %}
+        <table>
+            <tr>
+                <th>Party</th>
+                <th>Score</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.party_abbreviation }}</td>
+                <td>{{ result.party_score }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p class="no-results">No results found for this polling unit.</p>
+    {% endif %}
+
+    <a href="/" class="back-btn">Go Back</a>
+
+</body>
+</html> 
